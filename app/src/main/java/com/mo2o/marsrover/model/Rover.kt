@@ -42,8 +42,8 @@ class Rover {
         }
     }
 
-    private fun checkThereIsAnObstacle(x: Int, y: Int) = obstacles.find { obstacle -> obstacle.x == x && obstacle.y == y } != null
-
+    private fun checkThereIsAnObstacle(x: Int, y: Int) =
+            obstacles.find { obstacle -> obstacle.x == x && obstacle.y == y } != null
 
     private fun turnLeft() {
         orientation = when (orientation) {

@@ -19,7 +19,6 @@ class RoverTest {
     fun tearDown() {
     }
 
-
     @Test
     fun sutIsNotNull() {
         assertNotNull(sut)
@@ -72,7 +71,8 @@ class RoverTest {
 
     @Test
     fun turnRightFourTimesLooksNorth() {
-        sut.receiveCommands(commands = generateCommands(Rover.CMD_RIGHT, Rover.CMD_RIGHT, Rover.CMD_RIGHT, Rover.CMD_RIGHT))
+        sut.receiveCommands(commands = generateCommands(Rover.CMD_RIGHT,
+                Rover.CMD_RIGHT, Rover.CMD_RIGHT, Rover.CMD_RIGHT))
 
         assertEquals('N', sut.orientation)
     }
@@ -84,7 +84,6 @@ class RoverTest {
         assertEquals('W', sut.orientation)
     }
 
-
     @Test
     fun turnLeftTwoTimesLooksSouth() {
         sut.receiveCommands(commands = generateCommands(Rover.CMD_LEFT, Rover.CMD_LEFT))
@@ -94,14 +93,16 @@ class RoverTest {
 
     @Test
     fun turnLeftThreeTimesLooksEast() {
-        sut.receiveCommands(commands = generateCommands(Rover.CMD_LEFT, Rover.CMD_LEFT, Rover.CMD_LEFT))
+        sut.receiveCommands(commands = generateCommands(Rover.CMD_LEFT,
+                Rover.CMD_LEFT, Rover.CMD_LEFT))
 
         assertEquals(Rover.EAST, sut.orientation)
     }
 
     @Test
     fun turnLeftFourTimesLooksNorth() {
-        sut.receiveCommands(commands = generateCommands(Rover.CMD_LEFT, Rover.CMD_LEFT, Rover.CMD_LEFT, Rover.CMD_LEFT))
+        sut.receiveCommands(commands = generateCommands(Rover.CMD_LEFT,
+                Rover.CMD_LEFT, Rover.CMD_LEFT, Rover.CMD_LEFT))
 
         assertEquals('N', sut.orientation)
     }
