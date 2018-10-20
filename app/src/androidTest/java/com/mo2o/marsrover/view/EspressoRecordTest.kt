@@ -21,7 +21,8 @@ import org.junit.runner.RunWith
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class EspressoRecordTest {
-    lateinit var presenter: MarsRoverPresenter
+    private lateinit var sut: MarsRoverActivity
+    var presenter: MarsRoverPresenter? = null
     @get:Rule
     var activityTestRule: ActivityTestRule<MarsRoverActivity> =
             object : ActivityTestRule<MarsRoverActivity>(MarsRoverActivity::class.java,
@@ -41,18 +42,21 @@ class EspressoRecordTest {
     fun setUp() {
         presenter = MarsRoverPresenter()
         val intent = Intent(Intent.ACTION_MAIN)
-        activityTestRule.launchActivity(intent)
+        sut = activityTestRule.launchActivity(intent)
     }
 
     @Test
     fun espressoRecordTest() {
         val appCompatEditText = onView(
                 allOf(withId(R.id.inputCommad), isDisplayed()))
+        appCompatEditText.perform(replaceText("ffrl"), closeSoftKeyboard())
+
+        //pressBack()
+
         val floatingActionButton = onView(
                 allOf(withId(R.id.fab), isDisplayed()))
-
         floatingActionButton.perform(click())
-        appCompatEditText.perform(replaceText("ffrl"), closeSoftKeyboard())
+
         onView(withId(R.id.textLabel)).check(matches(withText("5,7,N")))
     }
 }
